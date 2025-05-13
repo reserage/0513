@@ -31,16 +31,17 @@ def logout(request):
 
 def adduser(request):	
 	try:
-		user=User.objects.get(username="test")
+		user=User.objects.get(username="tung_tung_shuar")
 	except:
 		user=None
 	if user!=None:
 		message = user.username + " 帳號已建立!"
 		return HttpResponse(message)
 	else:	# 建立 test 帳號			
-		user=User.objects.create_user("test","test@test.com.tw","a123456!")
+		user=User.objects.create_user("tung_tung_shuar","test@test.com.tw","a123456!")
 		user.first_name="wen" # 姓名
 		user.last_name="lin"  # 姓氏
 		user.is_staff=True	# 工作人員狀態
 		user.save()
+		auth.logout(request)
 		return redirect('/admin/')
