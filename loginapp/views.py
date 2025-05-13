@@ -43,5 +43,4 @@ def adduser(request):
 		user.last_name="lin"  # 姓氏
 		user.is_staff=True	# 工作人員狀態
 		user.save()
-		auth.logout(request)
 		return redirect('/admin/')
